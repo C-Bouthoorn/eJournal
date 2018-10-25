@@ -2,7 +2,7 @@ export default {
     /**
      * Replace all characters which might be used to inject HTML with their corresponding special character.
      */
-    escapeHtml: (rawhtml) {
+    escapeHtml (rawhtml) {
         // Based on https://stackoverflow.com/a/4835406
         const specialCharacterMap = {
             '&': '&amp;',
