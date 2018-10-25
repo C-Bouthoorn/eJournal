@@ -9,7 +9,7 @@
 
 <script>
 import userAPI from '@/api/user.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     props: {
@@ -71,7 +71,7 @@ export default {
                 })
                 .catch(error => {
                     this.$emit('fileUploadFailed', this.file.name)
-                    this.$toasted.error(escape(error.response.data.description))
+                    this.$toasted.error(escapeHtml(error.response.data.description))
                     this.file = null
                 })
         }

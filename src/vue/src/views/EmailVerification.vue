@@ -14,7 +14,7 @@
 import contentSingleColumn from '@/components/columns/ContentSingleColumn.vue'
 import icon from 'vue-awesome/components/Icon'
 import userAPI from '@/api/user.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'EmailVerification',
@@ -22,7 +22,7 @@ export default {
     mounted () {
         userAPI.verifyEmail(this.token)
             .then(response => {
-                this.$toasted.success(escape(response.data.description))
+                this.$toasted.success(escapeHtml(response.data.description))
                 this.$store.commit('user/EMAIL_VERIFIED')
                 this.$router.push({ name: 'Home' })
             })

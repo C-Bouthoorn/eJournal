@@ -51,7 +51,7 @@ import icon from 'vue-awesome/components/Icon'
 import cropper from '@/components/assets/ImageCropper'
 import { mapGetters } from 'vuex'
 import genericUtils from '@/utils/generic_utils.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     components: {
@@ -91,7 +91,7 @@ export default {
                     this.$store.commit('user/SET_FULL_USER_NAME', { firstName: this.firstName, lastName: this.lastName })
                     this.$toasted.success('Saved profile data.')
                 })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         fileHandler (dataURL) {
             userAPI.updateProfilePictureBase64(dataURL)
@@ -101,7 +101,7 @@ export default {
                     this.$toasted.success('Profile picture updated.')
                     this.$refs['cropperModal'].hide()
                 })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         downloadUserData () {
             userAPI.GDPR()

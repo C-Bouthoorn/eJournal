@@ -17,7 +17,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import validation from '@/utils/validation.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import auth from '@/api/auth'
 
@@ -34,8 +34,8 @@ export default {
         changePassword () {
             if (validation.validatePassword(this.newPass, this.newPassRepeat)) {
                 auth.changePassword(this.newPass, this.oldPass)
-                    .then(response => { this.$toasted.success(escape(response.data.description)) })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .then(response => { this.$toasted.success(escapeHtml(response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         },
         isChanged () {

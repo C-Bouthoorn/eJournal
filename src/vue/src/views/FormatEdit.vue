@@ -91,7 +91,7 @@ import formatEditSelectTemplateCard from '@/components/format/FormatEditSelectTe
 import templateEdit from '@/components/template/TemplateEdit.vue'
 import icon from 'vue-awesome/components/Icon'
 import formatAPI from '@/api/format.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'FormatEdit',
@@ -140,7 +140,7 @@ export default {
                 this.convertFromDB()
             })
             .then(_ => { this.isChanged = false })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
         window.addEventListener('beforeunload', e => {
             if (this.$route.name === 'FormatEdit' && this.isChanged) {
@@ -323,7 +323,7 @@ export default {
                     })
                 })
                 .catch(error => {
-                    this.$toasted.error(escape(error.response.data.description))
+                    this.$toasted.error(escapeHtml(error.response.data.description))
                     this.saveRequestInFlight = false
                 })
         },

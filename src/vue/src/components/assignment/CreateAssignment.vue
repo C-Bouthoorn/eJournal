@@ -65,7 +65,7 @@
 <script>
 import textEditor from '@/components/assets/TextEditor.vue'
 import icon from 'vue-awesome/components/Icon'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import assignmentAPI from '@/api/assignment'
 
@@ -111,7 +111,7 @@ export default {
                         this.$toasted.error('The website might be out of sync, please login again.')
                     })
                 })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         onReset (evt) {
             if (evt !== undefined) {

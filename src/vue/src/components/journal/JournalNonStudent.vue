@@ -87,7 +87,7 @@ import icon from 'vue-awesome/components/Icon'
 import store from '@/Store.vue'
 import journalAPI from '@/api/journal'
 import assignmentAPI from '@/api/assignment'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     props: ['cID', 'aID', 'jID'],
@@ -109,7 +109,7 @@ export default {
     created () {
         assignmentAPI.get(this.aID)
             .then(assignment => { this.assignment = assignment })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         journalAPI.getNodes(this.jID)
             .then(nodes => {
                 this.nodes = nodes
@@ -125,17 +125,17 @@ export default {
 
                 this.selectFirstUngradedNode()
             })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
         journalAPI.get(this.jID)
             .then(journal => { this.journal = journal })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
         if (store.state.filteredJournals.length === 0) {
             if (this.$hasPermission('can_view_all_journals')) {
                 journalAPI.getFromAssignment(this.cID, this.aID)
                     .then(journals => { this.assignmentJournals = journals })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
 
             if (this.$route.query.sort === 'sortFullName' ||
@@ -235,7 +235,7 @@ export default {
 
             journalAPI.get(this.jID)
                 .then(journal => { this.journal = journal })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         publishGradesJournal () {
             if (confirm('Are you sure you want to publish all grades for this journal?')) {

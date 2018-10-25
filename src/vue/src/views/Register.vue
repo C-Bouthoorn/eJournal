@@ -23,7 +23,7 @@ import breadCrumb from '@/components/assets/BreadCrumb.vue'
 import icon from 'vue-awesome/components/Icon'
 import registerUser from '@/components/account/RegisterUser.vue'
 import userAPI from '@/api/user'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'Register',
@@ -44,10 +44,10 @@ export default {
             userAPI.verifyEmail(this.emailVerificationToken)
                 .then(response => {
                     this.$store.commit('user/EMAIL_VERIFIED')
-                    this.$toasted.success(escape(response.data.description))
+                    this.$toasted.success(escapeHtml(response.data.description))
                     this.$router.push({ name: 'Home' })
                 })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         }
     }
 }

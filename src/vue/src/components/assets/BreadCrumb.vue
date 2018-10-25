@@ -27,7 +27,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import store from '@/Store.vue'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import common from '@/api/common'
 
@@ -109,7 +109,7 @@ export default {
                         }
                     })
                     .catch(error => {
-                        this.$toasted.error(escape(error.response.data.description))
+                        this.$toasted.error(escapeHtml(error.response.data.description))
                     })
                     .then(_ => { store.setCachedMap(this.cachedMap) })
             }

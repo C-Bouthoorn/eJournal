@@ -156,7 +156,7 @@ import courseAPI from '@/api/course'
 import groupAPI from '@/api/group'
 import roleAPI from '@/api/role'
 import participationAPI from '@/api/participation'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'CourseEdit',
@@ -196,11 +196,11 @@ export default {
                 this.course = course
                 this.originalCourse = this.deepCopyCourse(course)
             })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
         groupAPI.getAllFromCourse(this.cID)
             .then(groups => { this.groups = groups })
-            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+            .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
         roleAPI.getFromCourse(this.cID)
             .then(roles => { this.roles = roles })
@@ -209,11 +209,11 @@ export default {
         if (this.$hasPermission('can_view_course_users')) {
             roleAPI.getFromCourse(this.cID)
                 .then(roles => { this.roles = roles })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
             participationAPI.getEnrolled(this.cID)
                 .then(users => { this.participants = users })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         }
     },
     methods: {
@@ -229,7 +229,7 @@ export default {
                         this.$toasted.success('Successfully updated the course.')
                         store.clearCache()
                     })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             } else {
                 this.$toasted.error('One or more required fields are empty.')
             }
@@ -239,9 +239,9 @@ export default {
                 courseAPI.delete(this.cID)
                     .then(response => {
                         this.$router.push({name: 'Home'})
-                        this.$toasted.success(escape(response.description))
+                        this.$toasted.success(escapeHtml(response.description))
                     })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         },
         deleteParticipantLocally (user) {
@@ -268,31 +268,31 @@ export default {
         deleteGroup (groupName) {
             groupAPI.getAllFromCourse(this.cID)
                 .then(groups => { this.groups = groups })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
             // TODO replace api function with frontend function
             if (this.$hasPermission('can_view_course_users')) {
                 participationAPI.getEnrolled(this.cID)
                     .then(users => { this.participants = users })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         },
         updateGroup (oldGroupName, newGroupName) {
             // TODO replace api function with frontend function
             groupAPI.getAllFromCourse(this.cID)
                 .then(groups => { this.groups = groups })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
             if (this.$hasPermission('can_view_course_users')) {
                 participationAPI.getEnrolled(this.cID)
                     .then(users => { this.participants = users })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         },
         loadUnenrolledStudents () {
             participationAPI.getUnenrolled(this.cID)
                 .then(users => { this.unenrolledStudents = users })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             this.unenrolledLoaded = !this.unenrolledLoaded
         },
         routeToEditCourseRoles () {

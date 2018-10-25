@@ -51,7 +51,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import validation from '@/utils/validation.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import authAPI from '@/api/auth'
 
@@ -78,10 +78,10 @@ export default {
             authAPI.forgotPassword(username, emailAdress)
                 .then(response => {
                     this.$refs.forgotPasswordModalRef.hide()
-                    this.$toasted.success(escape(response.data.description))
+                    this.$toasted.success(escapeHtml(response.data.description))
                 })
                 .catch(error => {
-                    this.$toasted.error(escape(error.response.data.description))
+                    this.$toasted.error(escapeHtml(error.response.data.description))
                 })
         },
         handleLogin () {

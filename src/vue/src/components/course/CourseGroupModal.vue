@@ -31,7 +31,7 @@
 import icon from 'vue-awesome/components/Icon'
 import groupCard from '@/components/group/GroupCard.vue'
 import groupApi from '@/api/group.js'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'CourseGroupModal',
@@ -63,7 +63,7 @@ export default {
                     this.$toasted.success('Successfully created group.')
                     this.resetFormInput()
                 })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         resetFormInput (evt) {
             /* Reset our form values */

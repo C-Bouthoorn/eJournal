@@ -47,7 +47,7 @@ import createAssignment from '@/components/assignment/CreateAssignment.vue'
 import deadlineDeck from '@/components/assets/DeadlineDeck.vue'
 
 import assignmentAPI from '@/api/assignment'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'Course',
@@ -83,11 +83,11 @@ export default {
         loadAssignments () {
             assignmentAPI.getAllFromCourse(this.cID)
                 .then(assignments => { this.assignments = assignments })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
 
             assignmentAPI.getUpcoming(this.cID)
                 .then(deadlines => { this.deadlines = deadlines })
-                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
         },
         customisePage () {
             this.$toasted.info('Wishlist: Customise page')
@@ -139,7 +139,7 @@ export default {
                         this.$toasted.success(assignment.courses.length > 1 ? 'Removed assignment.' : 'Deleted assignment.')
                         this.loadAssignments()
                     })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         }
     }

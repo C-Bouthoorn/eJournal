@@ -16,7 +16,7 @@
 <script>
 import participationAPI from '@/api/participation'
 import icon from 'vue-awesome/components/Icon'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     props: {
@@ -34,7 +34,7 @@ export default {
                     .then(_ => {
                         this.$emit('add-participant', this.user)
                     })
-                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
+                    .catch(error => { this.$toasted.error(escapeHtml(error.response.data.description)) })
             }
         }
     },

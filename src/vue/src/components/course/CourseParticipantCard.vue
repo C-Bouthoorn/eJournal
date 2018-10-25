@@ -43,7 +43,7 @@
 
 <script>
 import icon from 'vue-awesome/components/Icon'
-import escape from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import participationAPI from '@/api/participation'
 
@@ -79,7 +79,7 @@ export default {
         removeFromCourse () {
             if (confirm('Are you sure you want to remove "' + this.user.name + '" from this course?')) {
                 participationAPI.delete(this.cID, this.user.id).then(data => {
-                    this.$toasted.success(escape(data.description))
+                    this.$toasted.success(escapeHtml(data.description))
                     if (this.$store.getters['user/uID'] === this.user.id) {
                         this.$store.dispatch('user/populateStore').catch(_ => {
                             this.$toasted.error('The website might be out of sync, please login again.')
@@ -88,7 +88,7 @@ export default {
                     }
                     this.$emit('delete-participant', this.user)
                 }, error => {
-                    this.$toasted.error(escape(error.response.data.description))
+                    this.$toasted.error(escapeHtml(error.response.data.description))
                 })
             }
         }
@@ -110,7 +110,7 @@ export default {
                         })
                     }
                 }, error => {
-                    this.$toasted.error(escape(error.response.data.description))
+                    this.$toasted.error(escapeHtml(error.response.data.description))
                 })
             }
         },
@@ -122,7 +122,7 @@ export default {
                 this.$emit('update:group', val)
                 participationAPI.update(this.cID, {user_id: this.user.id, group: this.selectedGroup, role: this.selectedRole})
                     .catch(error => {
-                        this.$toasted.error(escape(error.response.data.description))
+                        this.$toasted.error(escapeHtml(error.response.data.description))
                     })
             }
         },
