@@ -5,11 +5,11 @@ export default {
     escape (rawhtml) {
         // Based on https://stackoverflow.com/a/4835406
         const specialCharacterMap = {
-	    '&': '&amp;',
+            '&': '&amp;',
             '<': '&lt;',
             '>': '&gt;',
             '"': '&quot;',
-            "'": '&#039;',
+            "'": '&#039;'
         }
 
         return rawhtml.replace(/[&<>"']/g, (match) => specialCharacterMap[match])

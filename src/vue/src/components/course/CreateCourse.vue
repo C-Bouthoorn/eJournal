@@ -34,7 +34,6 @@ import genericUtils from '@/utils/generic_utils.js'
 import commonAPI from '@/api/common'
 import escape from '@/utils/escape.js'
 
-
 export default {
     name: 'CreateCourse',
     props: ['lti'],
