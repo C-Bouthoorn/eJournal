@@ -51,7 +51,7 @@ import icon from 'vue-awesome/components/Icon'
 import cropper from '@/components/assets/ImageCropper'
 import { mapGetters } from 'vuex'
 import genericUtils from '@/utils/generic_utils.js'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     components: {

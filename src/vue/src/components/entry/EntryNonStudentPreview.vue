@@ -58,7 +58,7 @@ import commentCard from '@/components/journal/CommentCard.vue'
 import entryFields from '@/components/entry/EntryFields.vue'
 import entryAPI from '@/api/entry'
 import icon from 'vue-awesome/components/Icon'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     props: ['entryNode'],

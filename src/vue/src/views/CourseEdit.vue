@@ -156,7 +156,7 @@ import courseAPI from '@/api/course'
 import groupAPI from '@/api/group'
 import roleAPI from '@/api/role'
 import participationAPI from '@/api/participation'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'CourseEdit',

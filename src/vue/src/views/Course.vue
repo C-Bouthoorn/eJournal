@@ -47,7 +47,7 @@ import createAssignment from '@/components/assignment/CreateAssignment.vue'
 import deadlineDeck from '@/components/assets/DeadlineDeck.vue'
 
 import assignmentAPI from '@/api/assignment'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'Course',

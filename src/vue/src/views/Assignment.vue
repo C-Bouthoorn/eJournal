@@ -75,7 +75,7 @@ import assignmentAPI from '@/api/assignment'
 import groupAPI from '@/api/group'
 import participationAPI from '@/api/participation'
 import icon from 'vue-awesome/components/Icon'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'Assignment',

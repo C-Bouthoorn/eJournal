@@ -22,7 +22,7 @@ import courseAPI from '@/api/course.js'
 import assignmentAPI from '@/api/assignment.js'
 import genericUtils from '@/utils/generic_utils.js'
 import icon from 'vue-awesome/components/Icon'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'LtiLaunch',

@@ -32,7 +32,7 @@ import courseAPI from '@/api/course'
 import icon from 'vue-awesome/components/Icon'
 import genericUtils from '@/utils/generic_utils.js'
 import commonAPI from '@/api/common'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'CreateCourse',

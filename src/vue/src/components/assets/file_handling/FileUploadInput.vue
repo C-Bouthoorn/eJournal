@@ -9,7 +9,7 @@
 
 <script>
 import userAPI from '@/api/user.js'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     props: {

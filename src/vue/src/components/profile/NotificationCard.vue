@@ -25,7 +25,7 @@
 <script>
 import Switch from '@/components/assets/SwitchComponent.vue'
 import userAPI from '@/api/user.js'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     props: ['userData'],

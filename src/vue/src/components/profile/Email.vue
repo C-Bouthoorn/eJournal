@@ -46,7 +46,7 @@
 <script>
 import userAPI from '@/api/user.js'
 import icon from 'vue-awesome/components/Icon'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     components: {

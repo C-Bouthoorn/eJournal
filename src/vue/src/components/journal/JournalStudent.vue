@@ -84,7 +84,7 @@ import icon from 'vue-awesome/components/Icon'
 import journalAPI from '@/api/journal'
 import assignmentAPI from '@/api/assignment'
 import entryAPI from '@/api/entry'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     props: ['cID', 'aID', 'jID'],

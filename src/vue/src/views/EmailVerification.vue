@@ -14,7 +14,7 @@
 import contentSingleColumn from '@/components/columns/ContentSingleColumn.vue'
 import icon from 'vue-awesome/components/Icon'
 import userAPI from '@/api/user.js'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'EmailVerification',

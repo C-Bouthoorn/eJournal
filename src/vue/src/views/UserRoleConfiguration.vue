@@ -78,7 +78,7 @@ import customCheckbox from '@/components/assets/CustomCheckbox.vue'
 import icon from 'vue-awesome/components/Icon'
 import roleAPI from '@/api/role'
 import commonAPI from '@/api/common'
-import escapeHtml from '@/utils/escape.js'
+import { escapeHtml } from '@/utils/escape.js'
 
 export default {
     name: 'UserRoleConfiguration',
