@@ -13,4 +13,3 @@ export function escapeHtml (rawhtml) {
 
     return rawhtml.replace(/[&<>"']/g, (match) => specialCharacterMap[match])
 }
-
