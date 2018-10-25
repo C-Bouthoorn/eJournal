@@ -52,6 +52,7 @@ import deadlineDeck from '@/components/assets/DeadlineDeck.vue'
 
 import courseAPI from '@/api/course'
 import assignmentAPI from '@/api/assignment'
+import escape from '@/utils/escape.js'
 
 import icon from 'vue-awesome/components/Icon'
 
@@ -79,13 +80,13 @@ export default {
 
         assignmentAPI.getUpcoming()
             .then(deadlines => { this.deadlines = deadlines })
-            .catch(error => { this.$toasted.error(error.response.data.description) })
+            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
     },
     methods: {
         loadCourses () {
             courseAPI.getUserEnrolled()
                 .then(courses => { this.courses = courses })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         showModal (ref) {
             this.$refs[ref].show()

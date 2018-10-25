@@ -77,6 +77,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import textEditor from '@/components/assets/TextEditor.vue'
+import escape from '@/utils/escape.js'
 
 import commentAPI from '@/api/comment'
 
@@ -125,14 +126,14 @@ export default {
                         this.editCommentTemp.push('')
                     }
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         getComments () {
             commentAPI.getFromEntry(this.eID)
                 .then(comments => {
                     this.commentObject = comments
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         addComment () {
             if (this.tempComment !== '') {
@@ -150,7 +151,7 @@ export default {
                         this.tempComment = ''
                         this.$refs['comment-text-editor-ref'].clearContent()
                     })
-                    .catch(error => { this.$toasted.error(error.response.data.description) })
+                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
             }
         },
         editCommentView (index, status, text) {
@@ -167,7 +168,7 @@ export default {
                 text: this.editCommentTemp[index]
             })
                 .then(comment => { this.$set(this.commentObject, index, comment) })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         deleteComment (cID) {
             if (confirm('Are you sure you want to delete this comment?')) {
@@ -183,7 +184,7 @@ export default {
                             this.editCommentTemp.push('')
                         }
                     })
-                    .catch(error => { this.$toasted.error(error.response.data.description) })
+                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
             }
         }
     }

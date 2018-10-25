@@ -22,6 +22,7 @@ import courseAPI from '@/api/course.js'
 import assignmentAPI from '@/api/assignment.js'
 import genericUtils from '@/utils/generic_utils.js'
 import icon from 'vue-awesome/components/Icon'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'LtiLaunch',
@@ -179,7 +180,7 @@ export default {
                         if (error.response.status === 404) {
                             this.states.state = this.states.new_assign
                         } else {
-                            this.$toasted.error(error.response.description)
+                            this.$toasted.error(escape(error.response.description))
                         }
                     })
                 break

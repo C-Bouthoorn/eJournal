@@ -18,6 +18,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import groupAPI from '@/api/group'
+import escape from '@/utils/escape.js'
 
 export default {
     props: {
@@ -48,15 +49,15 @@ export default {
                     this.$toasted.success('Successfully updated the group.')
                     this.form.newGroupName = ''
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         removeGroup () {
             if (confirm('Are you sure you want to remove "' + this.groupName + '" from this course?')) {
                 groupAPI.delete(this.cID, this.groupName).then(data => {
-                    this.$toasted.success(data.description)
+                    this.$toasted.success(escape(data.description))
                     this.$emit('delete-group', this.groupName)
                 }, error => {
-                    this.$toasted.error(error.response.data.description)
+                    this.$toasted.error(escape(error.response.data.description))
                 })
             }
         }

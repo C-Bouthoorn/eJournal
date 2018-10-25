@@ -32,6 +32,8 @@ import courseAPI from '@/api/course'
 import icon from 'vue-awesome/components/Icon'
 import genericUtils from '@/utils/generic_utils.js'
 import commonAPI from '@/api/common'
+import escape from '@/utils/escape.js'
+
 
 export default {
     name: 'CreateCourse',
@@ -62,7 +64,7 @@ export default {
                         }
                         this.$emit('handleAction', course.id)
                     })
-                    .catch(error => { this.$toasted.error(error.response.data.description) })
+                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
             } else {
                 this.$toasted.error('One or more required fields are empty.')
             }

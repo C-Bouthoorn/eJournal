@@ -78,6 +78,7 @@ import customCheckbox from '@/components/assets/CustomCheckbox.vue'
 import icon from 'vue-awesome/components/Icon'
 import roleAPI from '@/api/role'
 import commonAPI from '@/api/common'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'UserRoleConfiguration',
@@ -179,7 +180,7 @@ export default {
                         this.isChanged = false
                     })
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         formatPermissionString (str) {
             /* Converts underscores to spaces and capatilises the first letter. */
@@ -196,7 +197,7 @@ export default {
                             this.deleteRoleServerLoadedConfig(role)
                             this.$toasted.success('Role deleted successfully!')
                         })
-                        .catch(error => this.$toasted.error(error.response.data.description))
+                        .catch(error => this.$toasted.error(escape(error.response.data.description)))
                 } else {
                     this.deleteRoleLocalConfig(role)
                 }
@@ -220,7 +221,7 @@ export default {
                     this.$store.commit('user/UPDATE_PERMISSIONS', { permissions: coursePermissions, key: 'course' + this.cID })
                     if (!this.$hasPermission('can_edit_course_roles')) { this.$router.push({ name: 'Home' }) }
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         checkChanged () {
             for (var i = 0; i < this.roleConfig.length; i++) {
@@ -256,7 +257,7 @@ export default {
                     this.setRoleConfig = true
                 })
             })
-            .catch(error => { this.$toasted.error(error.response.data.description) })
+            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
     },
     components: {
         'content-single-table-column': contentSingleTableColumn,

@@ -36,6 +36,7 @@ import contentSingleColumn from '@/components/columns/ContentSingleColumn.vue'
 import breadCrumb from '@/components/assets/BreadCrumb.vue'
 import mainCard from '@/components/assets/MainCard.vue'
 import todoCard from '@/components/assets/TodoCard.vue'
+import escape from '@/utils/escape.js'
 
 import icon from 'vue-awesome/components/Icon'
 import assignmentAPI from '@/api/assignment'
@@ -53,7 +54,7 @@ export default {
     created () {
         assignmentAPI.getUpcoming()
             .then(deadlines => { this.deadlines = deadlines })
-            .catch(error => { this.$toasted.error(error.response.data.description) })
+            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
     },
     components: {
         'content-single-column': contentSingleColumn,

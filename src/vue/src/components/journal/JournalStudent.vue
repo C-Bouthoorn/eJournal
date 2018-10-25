@@ -84,6 +84,7 @@ import icon from 'vue-awesome/components/Icon'
 import journalAPI from '@/api/journal'
 import assignmentAPI from '@/api/assignment'
 import entryAPI from '@/api/entry'
+import escape from '@/utils/escape.js'
 
 export default {
     props: ['cID', 'aID', 'jID'],
@@ -118,7 +119,7 @@ export default {
                                 }
                             }
                         })
-                        .catch(error => { this.$toasted.error(error.response.data.description) })
+                        .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
                 }
             })
             .catch(_ => this.$toasted.error('Error while loading assignment data.'))
@@ -140,12 +141,12 @@ export default {
             this.nodes[this.currentNode] = editedData
             entryAPI.update(this.nodes[this.currentNode].entry.id, { content: editedData.entry.content })
                 .then(entry => { this.nodes[this.currentNode].entry = entry })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         deleteNode () {
             entryAPI.delete(this.nodes[this.currentNode].entry.id)
                 .then(data => {
-                    this.$toasted.success(data.description)
+                    this.$toasted.success(escape(data.description))
                     if (this.nodes[this.currentNode].type === 'd') {
                         this.nodes[this.currentNode].entry = null
                         this.currentNode = 0
@@ -153,7 +154,7 @@ export default {
                         this.nodes.splice(this.currentNode, 1)
                     }
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         discardChanges () {
             /*  Checks the node and depending of the type of node
@@ -208,7 +209,7 @@ export default {
                     this.nodes = data.nodes
                     this.currentNode = data.added
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         fillDeadline (data) {
             entryAPI.create({
@@ -221,7 +222,7 @@ export default {
                     this.nodes = data.nodes
                     this.currentNode = data.added
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         progressPoints (progressNode) {
             /* The function will update a given progressNode by

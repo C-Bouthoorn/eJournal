@@ -22,6 +22,7 @@ import icon from 'vue-awesome/components/Icon'
 
 import authAPI from '@/api/auth'
 import validation from '@/utils/validation.js'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'PasswordRecovery',
@@ -37,11 +38,11 @@ export default {
             if (validation.validatePassword(this.password, this.passwordRepeated)) {
                 authAPI.recoverPassword(this.username, this.recoveryToken, this.password)
                     .then(response => {
-                        this.$toasted.success(response.description)
+                        this.$toasted.success(escape(response.description))
                         this.$router.push({ name: 'Login' })
                     })
                     .catch(error => {
-                        this.$toasted.error(error.response.data.description)
+                        this.$toasted.error(escape(error.response.data.description))
                         this.$router.push({
                             name: 'ErrorPage',
                             params: {

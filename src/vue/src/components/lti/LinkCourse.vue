@@ -22,6 +22,7 @@
 <script>
 import mainCard from '@/components/assets/MainCard.vue'
 import courseAPI from '@/api/course'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'LinkCourse',
@@ -34,7 +35,7 @@ export default {
             if (!c.lti_couples || confirm('This course is already linked to ' + c.lti_couples + ' other course(s) from the learning-environment, are you sure you also want to link it?')) {
                 courseAPI.update(c.id, {lti_id: this.lti.ltiCourseID})
                     .then(course => { this.$emit('handleAction', course.id) })
-                    .catch(error => { this.$toasted.error(error.response.data.description) })
+                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
             }
         }
     }

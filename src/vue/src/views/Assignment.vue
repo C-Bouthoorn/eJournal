@@ -75,6 +75,7 @@ import assignmentAPI from '@/api/assignment'
 import groupAPI from '@/api/group'
 import participationAPI from '@/api/participation'
 import icon from 'vue-awesome/components/Icon'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'Assignment',
@@ -127,7 +128,7 @@ export default {
                 this.stats = assignment.stats
             })
             .catch(error => {
-                this.$toasted.error(error.response.data.description)
+                this.$toasted.error(escape(error.response.data.description))
             })
 
         if (this.$hasPermission('can_view_course_users')) {
@@ -135,7 +136,7 @@ export default {
                 .then(groups => {
                     this.groups = groups
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         }
 
         participationAPI.get(this.cID)
@@ -144,7 +145,7 @@ export default {
                     this.selectedFilterGroupOption = participant.group.name
                 }
             })
-            .catch(error => { this.$toasted.error(error.response.data.description) })
+            .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
 
         if (this.$route.query.sort === 'sortFullName' ||
             this.$route.query.sort === 'sortUsername' ||

@@ -44,6 +44,7 @@ import pdf from 'vue-pdf'
 import userAPI from '@/api/user.js'
 import icon from 'vue-awesome/components/Icon'
 import genericUtils from '@/utils/generic_utils.js'
+import escape from '@/utils/escape.js'
 
 export default {
     props: {
@@ -115,7 +116,7 @@ export default {
             this.$toasted.error('Password handling is not implemented.')
         },
         error (err) {
-            this.$toasted.error(err)
+            this.$toasted.error(escape(err))
         },
         print () {
             this.$refs.pdf.print()

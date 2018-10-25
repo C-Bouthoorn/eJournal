@@ -25,6 +25,7 @@
 <script>
 import Switch from '@/components/assets/SwitchComponent.vue'
 import userAPI from '@/api/user.js'
+import escape from '@/utils/escape.js'
 
 export default {
     props: ['userData'],
@@ -38,7 +39,7 @@ export default {
                     this.$store.commit('user/SET_GRADE_NOTIFICATION', user.grade_notifications)
                     this.$toasted.success('Grade notification setting updated successfully.')
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         },
         getCommentNotification (isActive) {
             userAPI.update(0, {comment_notifications: isActive})
@@ -46,7 +47,7 @@ export default {
                     this.$store.commit('user/SET_COMMENT_NOTIFICATION', user.comment_notifications)
                     this.$toasted.success('Comment notification setting updated successfully.')
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         }
     }
 }

@@ -48,6 +48,7 @@ import loginForm from '@/components/account/LoginForm.vue'
 
 import userAPI from '@/api/user'
 import icon from 'vue-awesome/components/Icon'
+import escape from '@/utils/escape.js'
 
 export default {
     name: 'LtiCreateLinkUser',
@@ -80,7 +81,7 @@ export default {
                         this.signal(['userIntegrated'])
                     })
                 })
-                .catch(error => { this.$toasted.error(error.response.data.description) })
+                .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
         }
     }
 }

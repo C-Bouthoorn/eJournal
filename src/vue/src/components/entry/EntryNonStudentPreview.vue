@@ -58,6 +58,7 @@ import commentCard from '@/components/journal/CommentCard.vue'
 import entryFields from '@/components/entry/EntryFields.vue'
 import entryAPI from '@/api/entry'
 import icon from 'vue-awesome/components/Icon'
+import escape from '@/utils/escape.js'
 
 export default {
     props: ['entryNode'],
@@ -135,14 +136,14 @@ export default {
                             this.$toasted.success('Grade updated and published.')
                             this.$emit('check-grade')
                         })
-                        .catch(error => { this.$toasted.error(error.response.data.description) })
+                        .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
                 } else {
                     entryAPI.update(this.entryNode.entry.id, {grade: this.grade, published: 0})
                         .then(_ => {
                             this.$toasted.success('Grade updated but not published.')
                             this.$emit('check-grade')
                         })
-                        .catch(error => { this.$toasted.error(error.response.data.description) })
+                        .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
                 }
             }
         }

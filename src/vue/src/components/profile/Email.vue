@@ -46,6 +46,7 @@
 <script>
 import userAPI from '@/api/user.js'
 import icon from 'vue-awesome/components/Icon'
+import escape from '@/utils/escape.js'
 
 export default {
     components: {
@@ -64,15 +65,15 @@ export default {
                 userAPI.requestEmailVerification()
                     .then(response => {
                         this.showEmailValidationInput = true
-                        this.$toasted.success(response.data.description)
+                        this.$toasted.success(escape(response.data.description))
                     })
-                    .catch(error => { this.$toasted.error(error.response.data.description) })
+                    .catch(error => { this.$toasted.error(escape(error.response.data.description)) })
             }
         },
         verifyEmail () {
             userAPI.verifyEmail(this.emailVerificationToken)
                 .then(response => {
-                    this.$toasted.success(response.data.description)
+                    this.$toasted.success(escape(response.data.description))
                     this.$store.commit('user/EMAIL_VERIFIED')
                     this.showEmailValidationInput = false
                 })
