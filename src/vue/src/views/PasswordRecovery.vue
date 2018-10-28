@@ -22,7 +22,7 @@ import icon from 'vue-awesome/components/Icon'
 
 import authAPI from '@/api/auth'
 import validation from '@/utils/validation.js'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'PasswordRecovery',

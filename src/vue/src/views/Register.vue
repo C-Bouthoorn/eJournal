@@ -23,7 +23,7 @@ import breadCrumb from '@/components/assets/BreadCrumb.vue'
 import icon from 'vue-awesome/components/Icon'
 import registerUser from '@/components/account/RegisterUser.vue'
 import userAPI from '@/api/user'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'Register',

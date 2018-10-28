@@ -91,7 +91,7 @@ import formatEditSelectTemplateCard from '@/components/format/FormatEditSelectTe
 import templateEdit from '@/components/template/TemplateEdit.vue'
 import icon from 'vue-awesome/components/Icon'
 import formatAPI from '@/api/format.js'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'FormatEdit',

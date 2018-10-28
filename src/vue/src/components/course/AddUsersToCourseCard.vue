@@ -16,7 +16,7 @@
 <script>
 import participationAPI from '@/api/participation'
 import icon from 'vue-awesome/components/Icon'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     props: {

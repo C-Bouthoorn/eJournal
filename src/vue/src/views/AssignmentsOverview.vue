@@ -36,7 +36,7 @@ import contentSingleColumn from '@/components/columns/ContentSingleColumn.vue'
 import breadCrumb from '@/components/assets/BreadCrumb.vue'
 import mainCard from '@/components/assets/MainCard.vue'
 import todoCard from '@/components/assets/TodoCard.vue'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import icon from 'vue-awesome/components/Icon'
 import assignmentAPI from '@/api/assignment'

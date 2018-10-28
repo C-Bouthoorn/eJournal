@@ -51,7 +51,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import feedback from '@/api/feedback'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     data () {

@@ -27,7 +27,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import store from '@/Store.vue'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import common from '@/api/common'
 

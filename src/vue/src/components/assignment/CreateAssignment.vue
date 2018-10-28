@@ -65,7 +65,7 @@
 <script>
 import textEditor from '@/components/assets/TextEditor.vue'
 import icon from 'vue-awesome/components/Icon'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import assignmentAPI from '@/api/assignment'
 

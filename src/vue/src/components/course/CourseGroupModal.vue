@@ -31,7 +31,7 @@
 import icon from 'vue-awesome/components/Icon'
 import groupCard from '@/components/group/GroupCard.vue'
 import groupApi from '@/api/group.js'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'CourseGroupModal',

@@ -48,7 +48,7 @@ import loginForm from '@/components/account/LoginForm.vue'
 
 import userAPI from '@/api/user'
 import icon from 'vue-awesome/components/Icon'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'LtiCreateLinkUser',

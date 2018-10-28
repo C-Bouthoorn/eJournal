@@ -22,7 +22,7 @@
 <script>
 import mainCard from '@/components/assets/MainCard.vue'
 import courseAPI from '@/api/course'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'LinkCourse',

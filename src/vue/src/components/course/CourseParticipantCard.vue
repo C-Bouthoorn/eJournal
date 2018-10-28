@@ -43,7 +43,7 @@
 
 <script>
 import icon from 'vue-awesome/components/Icon'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import participationAPI from '@/api/participation'
 

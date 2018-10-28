@@ -14,7 +14,7 @@
 <script>
 import assignmentCard from '@/components/assignment/AssignmentCard.vue'
 import assignmentAPI from '@/api/assignment'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     name: 'LinkAssignment',

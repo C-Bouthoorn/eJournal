@@ -52,7 +52,7 @@ import deadlineDeck from '@/components/assets/DeadlineDeck.vue'
 
 import courseAPI from '@/api/course'
 import assignmentAPI from '@/api/assignment'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 import icon from 'vue-awesome/components/Icon'
 

@@ -18,7 +18,7 @@
 <script>
 import icon from 'vue-awesome/components/Icon'
 import groupAPI from '@/api/group'
-import { escapeHtml } from '@/utils/escape.js'
+import escapeHtml from '@/utils/escape.js'
 
 export default {
     props: {
